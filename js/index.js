@@ -12,9 +12,9 @@ function getInputValueById(id) {
   return Number(document.getElementById(id).value);
 }
 
-function showError(id) {
-  return document.getElementById(id).classList.remove("hidden");
-}
+// function showError(id) {
+//   return document.getElementById(id).classList.remove("hidden");
+// }
 
 // Add Event Listener for Calculate Button
 
@@ -36,26 +36,26 @@ calculate.addEventListener("click", function () {
   const courses = getInputValueById("courses");
   const internet = getInputValueById("internet");
 
-  //   if (income <= 0 || isNaN(income)) {
-  //     document.getElementById("income-error").classList.remove("hidden");
-  //     return;
-  //   }
-  showError("income-error");
-  //   if (software <= 0 || isNaN(software)) {
-  //     document.getElementById("software-error").classList.remove("hidden");
-  //     return;
-  //   }
-  showError("software-error");
-  //   if (courses <= 0 || isNaN(courses)) {
-  //     document.getElementById("courses-error").classList.remove("hidden");
-  //     return;
-  //   }
-  showError("courses-error");
-  //   if (internet <= 0 || isNaN(internet)) {
-  //     document.getElementById("internet-error").classList.remove("hidden");
-  //     return;
-  //   }
-  showError("internet-error");
+  if (income <= 0 || isNaN(income)) {
+    document.getElementById("income-error").classList.remove("hidden");
+    return;
+  }
+  // showError("income-error");
+  if (software <= 0 || isNaN(software)) {
+    document.getElementById("software-error").classList.remove("hidden");
+    return;
+  }
+  // showError("software-error");
+  if (courses <= 0 || isNaN(courses)) {
+    document.getElementById("courses-error").classList.remove("hidden");
+    return;
+  }
+  // showError("courses-error");
+  if (internet <= 0 || isNaN(internet)) {
+    document.getElementById("internet-error").classList.remove("hidden");
+    return;
+  }
+  // showError("internet-error");
   //   console.log(income, software, courses, internet);
   const totalExpense = software + courses + internet;
   const balance = income - totalExpense;
