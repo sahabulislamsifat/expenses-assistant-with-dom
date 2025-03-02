@@ -9,17 +9,41 @@
 // Add Event Listener for Calculate Button
 
 const calculate = document.getElementById("calculate");
+let serialNo = 0;
 
 // console.log(calculate);
 calculate.addEventListener("click", function () {
   //   console.log("kaj kortese.....?");
+  serialNo += 1;
   const income = Number(document.getElementById("income").value);
   const software = Number(document.getElementById("software").value);
   const courses = Number(document.getElementById("courses").value);
   const internet = Number(document.getElementById("internet").value);
+
+  if (income <= 0 || isNaN(income)) {
+    document.getElementById("income-error").classList.remove("hidden");
+    return;
+  }
+  if (software <= 0 || isNaN(software)) {
+    document.getElementById("software-error").classList.remove("hidden");
+    return;
+  }
+  if (courses <= 0 || isNaN(courses)) {
+    document.getElementById("courses-error").classList.remove("hidden");
+    return;
+  }
+  if (internet <= 0 || isNaN(internet)) {
+    document.getElementById("internet-error").classList.remove("hidden");
+    return;
+  }
   //   console.log(income, software, courses, internet);
   const totalExpense = software + courses + internet;
   const balance = income - totalExpense;
+
+  if (totalExpense > income) {
+    document.getElementById("logic-error").classList.remove("hidden");
+    return;
+  }
 
   //   console.table({ totalExpense, balance });
   const totalExpenseElement = document.getElementById("total-expenses");
@@ -35,6 +59,7 @@ calculate.addEventListener("click", function () {
   historyElement.className =
     "bg-white border-l-2 p-4 rounded-md border-indigo-600";
   historyElement.innerHTML = `
+  <p class='text-xs text-gray-500'>Serial No: ${serialNo}</p>
     <p class='text-xs text-gray-500'>${new Date().toLocaleDateString()}</p>
     <p class='text-xs'>Income: $${income.toFixed(2)}</p>
     <p class='text-xs text-gray-500'>Expenses: $${totalExpense.toFixed(2)}</p>
@@ -56,6 +81,11 @@ calculateSavings.addEventListener("click", function () {
   const courses = Number(document.getElementById("courses").value);
   const internet = Number(document.getElementById("internet").value);
   const savingsPercentage = Number(document.getElementById("savings").value);
+
+  if (savingsPercentage <= 0 || isNaN(savingsPercentage)) {
+    document.getElementById("savings-error").classList.remove("hidden");
+    return;
+  }
   // console.log(savingsPercentage);
   const totalExpense = software + courses + internet;
   const balance = income - totalExpense;
@@ -132,4 +162,5 @@ assistantTab.addEventListener("click", function () {
     "to-purple-600"
   );
   document.getElementById("expense-form").classList.remove("hidden");
+  document.getElementById("history-section").classList.add("hidden");
 });
