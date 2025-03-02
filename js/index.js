@@ -30,6 +30,19 @@ calculate.addEventListener("click", function () {
 
   const resultVisible = document.getElementById("results");
   resultVisible.classList.remove("hidden");
+
+  const historyElement = document.createElement("div");
+  historyElement.className =
+    "bg-white border-l-2 p-4 rounded-md border-indigo-600";
+  historyElement.innerHTML = `
+    <p class='text-xs text-gray-500'>${new Date().toLocaleDateString()}</p>
+    <p class='text-xs'>Income: $${income.toFixed(2)}</p>
+    <p class='text-xs text-gray-500'>Expenses: $${totalExpense.toFixed(2)}</p>
+    <p class='text-xs text-gray-500'>Balance: $${balance.toFixed(2)}</p>
+    `;
+
+  const historyContainer = document.getElementById("history-list");
+  historyContainer.insertBefore(historyElement, historyContainer.firstChild);
 });
 
 // addEventListener for Savings button
@@ -89,6 +102,7 @@ historyTab.addEventListener("click", function () {
     "to-purple-600"
   );
   document.getElementById("expense-form").classList.add("hidden");
+  document.getElementById("history-section").classList.remove("hidden");
 });
 
 assistantTab.addEventListener("click", function () {
