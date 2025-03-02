@@ -56,3 +56,66 @@ calculateSavings.addEventListener("click", function () {
   const remainingBalanceElement = document.getElementById("remaining-balance");
   remainingBalanceElement.innerText = remainingBalance.toFixed(2);
 });
+
+// Tab Switching
+
+const historyTab = document.getElementById("history-tab");
+const assistantTab = document.getElementById("assistant-tab");
+
+historyTab.addEventListener("click", function () {
+  historyTab.classList.add(
+    "w-1/2",
+    "py-2",
+    "rounded-l-md",
+    "focus:outline-none",
+    "transition-colors",
+    "duration-200",
+    "text-white",
+    "font-semibold",
+    "bg-gradient-to-r",
+    "from-blue-500",
+    "to-purple-600"
+  );
+
+  assistantTab.classList.remove(
+    "py-2",
+    "rounded-l-md",
+    "focus:outline-none",
+    "transition-colors",
+    "duration-200",
+    "text-white",
+    "bg-gradient-to-r",
+    "from-blue-500",
+    "to-purple-600"
+  );
+  document.getElementById("expense-form").classList.add("hidden");
+});
+
+assistantTab.addEventListener("click", function () {
+  assistantTab.classList.add(
+    "w-1/2",
+    "py-2",
+    "rounded-l-md",
+    "focus:outline-none",
+    "transition-colors",
+    "duration-200",
+    "text-white",
+    "font-semibold",
+    "bg-gradient-to-r",
+    "from-blue-500",
+    "to-purple-600"
+  );
+
+  historyTab.classList.remove(
+    "py-2",
+    "rounded-l-md",
+    "focus:outline-none",
+    "transition-colors",
+    "duration-200",
+    "text-white",
+    "bg-gradient-to-r",
+    "from-blue-500",
+    "to-purple-600"
+  );
+  document.getElementById("expense-form").classList.remove("hidden");
+});
